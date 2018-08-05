@@ -151,25 +151,25 @@ void TIM14_NVIC_Config(uint8_t Priority)
 	NVIC_InitStruct.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&NVIC_InitStruct);
 }
-float x = 0, y = -45;
+//float x = 0, y = 0;
 void TIM3_IRQ(void)
 {
     if(TIM_GetITStatus(TIM3, TIM_IT_Update) == SET)
     {
         TIM_ClearITPendingBit(TIM3,TIM_FLAG_Update);
         LED_Flicker();
-		if(x < -180){
-			x = -180;
-		}else if(x > 180){
-			x = 180;
-		}
-		if(y < -180){
-			y = -180;
-		}else if(y > 180){
-			y = 180;
-		}
-		TIM_SetCompare1(TIM16, x * 5 / 9 + 150);
-		TIM_SetCompare1(TIM17, y * 5 / 9 + 150);
+//		if(x < -150){
+//			x = -150;
+//		}else if(x > 150){
+//			x = 150;
+//		}
+//		if(y < -90){
+//			y = -90;
+//		}else if(y > 90){
+//			y = 90;
+//		}
+//		TIM_SetCompare1(TIM16, x / 1.5 + 150);
+//		TIM_SetCompare1(TIM17, y / 1.5 + 150);
     }
 }
 

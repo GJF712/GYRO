@@ -27,12 +27,12 @@ void USART1_Init(void)
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
-	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
+	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_DOWN;
 	GPIO_Init(GPIOA, &GPIO_InitStructure);
 	
 	USART_StructInit(&USART_InitStructure);
 	/* USART1的基本配置 */
-	USART_InitStructure.USART_BaudRate = 19200;              //波特率
+	USART_InitStructure.USART_BaudRate = 115200;              //波特率
 	USART_InitStructure.USART_WordLength = USART_WordLength_8b;
 	USART_InitStructure.USART_StopBits = USART_StopBits_1;
 	USART_InitStructure.USART_Parity = USART_Parity_No;
@@ -104,7 +104,7 @@ void USART1_IRQ(void)
         Usart1_Data.Data[Usart1_Data.Len] = USART_ReceiveData(USART1);
 //		USART1_SendByte(Usart1_Data.Data[Usart1_Data.Len]);
 		Usart1_Data.Len++;
-        TIM14_Compare1Set(10);
+        TIM14_Compare1Set(50);
     }
     if(USART_GetITStatus(USART1, USART_IT_ORE) == SET)
     {

@@ -67,18 +67,18 @@ int main(void)
 //				y = *(float *)&_Data->Data[4];
 				memcpy(&x, &_Data->Data[0], 4);
 				memcpy(&y, &_Data->Data[4], 4);
-				if(x < -180){
-					x = -180;
-				}else if(x > 180){
-					x = 180;
+				if(x < -150){
+					x = -150;
+				}else if(x > 150){
+					x = 150;
 				}
-				if(y < -180){
-					y = -180;
-				}else if(y > 180){
-					y = 180;
+				if(y < -90){
+					y = -90;
+				}else if(y > 90){
+					y = 90;
 				}
-				TIM_SetCompare1(TIM16, x * 5 / 9 + 150);
-				TIM_SetCompare1(TIM17, y * 5 / 9 + 150);
+				TIM_SetCompare1(TIM16, x / 1.5 + 150);
+				TIM_SetCompare1(TIM17, y / 1.5 + 150);
 			}
 //			USART1_SendBuf(_Data->Data, _Data->Len);
 			_Data->RXFinshFlag = 0;
